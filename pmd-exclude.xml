@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="mybraces" xmlns="http://pmd.sf.net/ruleset/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+	xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+	<description>Clear some false positives and annoyances</description>
+<!-- PMD rulesets -->
+	<exclude-pattern>modules/web/target/work</exclude-pattern>
+	
+	<rule ref="rulesets/imports.xml">
+		<exclude name="TooManyStaticImports" />
+	</rule>
+	
+	<rule ref="rulesets/basic.xml">
+		<exclude name="UselessOverridingMethod" />
+	</rule>
+
+	<rule ref="rulesets/strings.xml">
+		<exclude name="AvoidDuplicateLiterals" />
+	</rule>
+
+	<rule ref="rulesets/unusedcode.xml">
+	</rule>
+</ruleset>

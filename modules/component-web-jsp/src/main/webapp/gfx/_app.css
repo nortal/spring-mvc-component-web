@@ -1,0 +1,110 @@
+/*
+	Rakenduse põhised definitsioonid
+*/
+
+span.unchecked {
+	padding-left: 23px;
+}
+.bold {
+	font-weight: bold;
+}
+TABLE.form TD.data P:nth-child(1)  {
+	padding: 0 0 .5em !important;
+}
+
+summary {
+	margin: 0 !important;
+	padding-bottom: 0 !important;
+	background: none !important;
+	text-align: left !important;
+	font-size: 20px !important;
+	line-height: 26px !important;
+	color: #333 !important;
+}
+
+/* kasutusjuhend */
+
+#help-userguide {
+	padding: 5px;
+}
+
+#help-userguide td {
+	border: 1px solid #DDDDDD;
+    text-align: left;
+    vertical-align: top;
+    background: none no-repeat scroll right center #FFF;
+}
+
+#help-userguide table {
+    border-collapse: collapse;
+}
+
+#help-userguide th {
+    background: none no-repeat scroll right center #F0F0F0;
+}
+
+#help-userguide p, table, tr, td, .bodytext, .stepfield, .wiki-content p, .panelContent {
+     color: #333333;
+}
+
+/* // kasutusjuhend */
+
+TABLE.form.nested {
+	margin-top: 0px !important;
+}
+
+OPTION.separator {
+   letter-spacing: -1px;
+   text-align:center;
+}
+
+/*  JÄRGNEVA VÕIKS TÕSTA PROTOÜÜBI FAILI _main.css */
+
+/* Modaalaken */
+div.modalpopup-content {
+	overflow: auto !important;
+}
+
+div.modalpopup-footer {
+	box-shadow: 0px 0px 0px 0px #FFFFFF !important;
+}
+
+/* Kirjutame üle üldise kujunduse */
+span.checked {
+	color: black !important;
+}
+
+TABLE.form TD.data SPAN.date {
+	color: black !important;
+	font-weight: bold !important;
+}
+/* // Kirjutame üle üldise kujunduse */
+
+/*  loendi täiendav kujundamine */
+ol li {
+	padding-left: 0px;
+	background: none;
+}
+/*  // loendi täiendav kujundamine */
+
+label.req:before { 
+	content:" *";
+	color: #f00;
+	line-height: 1;
+	font-weight: bold;
+	padding-right: 2px;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	vertical-align: middle; 
+}
+
+input[type=radio], input[type=checkbox] {
+	width: auto;
+}
+
+/* Vajalik aadressi autocomplete abiinfo jaoks - rida on määratud white-space: nowrap */
+div.help p {
+	white-space: normal;
+}
+/* // Vajalik aadressi autocomplete abiinfo jaoks - rida on määratud white-space: nowrap */
+
+/* // JÄRGNEVA VÕIKS TÕSTA PROTOÜÜBI FAILI _main.css */

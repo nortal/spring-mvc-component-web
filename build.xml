@@ -1,0 +1,147 @@
+<project name="EPM" default="build">
+
+  <!-- Init section -->
+  <property name="project.dir" location="." />
+  <property environment="env" />
+  <property name="epm-web.dir" location="${project.dir}/modules/web/src/main/webapp" />
+  <property name="epm-web.resources.dir" location="${project.dir}/modules/web/src/main/resources" />
+  <property name="web-inf.dir" location="${epm-web.dir}/WEB-INF" />
+  <property name="build-lib.dir" location="build-lib" />
+  <property file="build.properties" />
+
+
+  <!-- Ant contrib tasks {{{ -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement path="${build-lib.dir}/ant-contrib-1.0b3.jar" />
+    </classpath>
+  </taskdef>
+  <!-- }}} Ant contrib tasks -->
+
+  <import file="hgdk-build.xml" />
+  
+  <target name="build">    
+	<exec executable="${env.MAVEN_HOME}/bin/mvn.bat">
+        <arg line="clean package" />
+	</exec>
+  </target>
+
+  <!-- HG Development Kit -->
+
+  <property name="hgdk-build.xml" value="hgdk-build.xml" />
+  
+  <property name="hgdk.personal.properties" value="${basedir}/hgdk-personal.properties" />
+  <property file="${hgdk.personal.properties}" prefix="hgdk" />
+  
+  <property name="hgdk.project.properties" value="${basedir}/hgdk-project.properties" />
+  <property file="${hgdk.project.properties}" prefix="hgdk" />
+
+  <dirname property="current-dir-full-name" file="build.xml" />
+  <basename property="current-dir-name" file="${current-dir-full-name}" />
+
+  <target name="prepare-merge">
+	<!-- Asendada EPM spetsiifilise preparega -->
+    <!-- copy todir="${hgdk.mergeDirectory}/${current-dir-name}" overwrite="false">
+      <fileset file="personal.properties" />
+    </copy-->
+  </target>
+
+  <!-- Database targets -->
+  <target name="-set-change-dir" depends="get-current-version">
+      <property name="db-propagation.current.change.dir" 
+                location="${web-inf.dir}/db/changes/${epm.releaseVersion}/${epm.currentVersion}-${project.user}" />
+  </target>
+  
+  <target name="create-change-dir" description="Creates a db propagation directory corresponding to current change."
+      depends="-make-change-dir, rewrite-order-key">
+  </target>
+
+  <target name="create-project-version" description="Creates epm.runtime.properties file and adds the current version number in it" depends="get-current-version">
+	<echoproperties destfile="${epm-web.resources.dir}/epm.runtime.properties" regex="epm.currentVersion" />
+  </target>
+  
+  <target name="-make-change-dir" depends="-set-change-dir">
+    <fail unless="project.user" message="username needs to be set !" />
+    <mkdir dir="${db-propagation.current.change.dir}" />
+    <touch file="${db-propagation.current.change.dir}/go.sql" />
+  </target>
+  
+  <target name="write-order-key" unless="db-propagation.keep.order.key" depends="-set-change-dir">
+    <tstamp>
+      <format property="db-propagation.order.key" pattern="yyyy-MM-dd-HH-mm-ss" />
+    </tstamp>
+    <concat destfile="${db-propagation.current.change.dir}/order.txt">${db-propagation.order.key}</concat>
+  </target>
+  
+  <target name="rewrite-order-key" unless="db-propagation.keep.order.key" description="Renew order key in the current change directory"
+      depends="-set-change-dir">
+    <condition property="db-propagation.keep.order.key">
+      <not>
+        <available file="${db-propagation.current.change.dir}" type="dir" />
+      </not>
+    </condition>
+    <antcall target="write-order-key" />
+  </target>
+
+  <target name="get-current-version" depends="current-version" 
+      description="get base version of the code by looking at Hg tags (via Hgdk)" >
+	
+	<property name="currentVersion" value="${epm.current.version}"/>
+     <echo>CURRENT_VERSION=${currentVersion}</echo>
+
+    <propertyregex property="epm.currentVersion"
+                   input="${currentVersion}"
+                   regexp="ver-(.*)"
+                   replace="\1" />
+    
+    <propertyregex property="epm.releaseVersion"
+                   input="${epm.currentVersion}"
+                   regexp="(.*)\..*"
+                   replace="\1" />
+    
+     <echo>CURRENT_BASE_VERSION=${epm.currentVersion}</echo>
+   </target>
+
+  <!-- hgdk shortcuts -->
+  <target name="hgpmh" depends="pull-merge-heads" description="Pull-Merge-Heads (HGDK: pull-merge-heads)" />
+  
+  <target name="hgpma" depends="with-lock, pull-merge-all, show-lock" description="[aquire lock], Pull, Merge-All (HGDK: with-lock pull-merge-all)" />
+          
+  <target name="hgpmap" depends="with-lock, pull-merge-all-push, show-lock" description="[aquire lock], Pull, Merge-All, Push, [unlock] (HGDK: with-lock pull-merge-all)" />
+
+  <target name="hgpu" depends="with-lock, push, show-lock" description="Push, [Unlock] (HGDK: with-lock push)" />
+
+  <target name="hgsl" depends="show-lock" description="Show Lock status (HGDK: show-lock)" />
+  
+  <target name="hgu" depends="unlock-repo, show-lock" description="Unlock repo (HGDK: unlock-repo)" />
+
+  <target name="hgl" depends="lock-repo, show-lock" description="Lock repo (HGDK: lock-repo)" />
+
+	<target name="mavenTest" description="Builds the individual project">
+		<exec executable="${env.MAVEN_HOME}\bin\mvn.bat">
+			<arg line="test -e" />
+		</exec>
+	</target>
+
+   <!-- Propagator tasks -->
+	<target name="collect-properties" description="Collects propagator properties.">
+		<mkdir dir="${classes.dir}" />
+		<property file="personal.properties" />
+		<hierarchicalproperties config="${conf.dir}" file="db-propagator.properties" dir="conf" />
+		<echoproperties destfile="${classes.dir}/db-propagator.properties" prefix="db.propagation" />
+	</target>
+
+	<target name="recreate-db-user" depends="collect-properties" description="Recreates DB user of specified RDBMS using driver info.">
+		<java fork="true" classname="eu.webmedia.dbpropagation.util.PropagatorRecreateUserTool" classpathref="propagator.classpath" />
+	</target>
+
+	<target name="test-dbpro" description="Test propagation, test is failed if target failes.">
+		<java fork="true" classname="eu.webmedia.dbpropagation.util.PropagatorSpringExecutor" classpathref="propagator.classpath" failonerror="true">
+		</java>
+	</target>
+
+	<target name="export-data" description="Exports tables using DSV file format">
+		<java fork="true" classname="eu.webmedia.dbpropagation.util.PropagatorTableExport" classpathref="propagator.classpath">
+		</java>
+	</target>
+</project>

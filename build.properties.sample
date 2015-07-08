@@ -1,0 +1,2 @@
+project.user = developer
+conf.dir = conf/${project.user}

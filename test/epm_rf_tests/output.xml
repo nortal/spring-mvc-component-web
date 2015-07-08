@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20150130 14:00:29.195" generator="Robot 2.8.5 (Python 3.4.2 on win32)">
+<suite name="EPM" id="s1" source="C:\Development\workspace\java\epm\EPM\test\epm_rf_tests\EPM.txt">
+<test name="Mobiiliga sisse ja välja logimine" id="s1-t1">
+<kw type="kw" name="Open Browser">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}</arg>
+<arg>${LEHITSEJA}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.233" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status endtime="20150130 14:00:29.234" status="FAIL" starttime="20150130 14:00:29.233"></status>
+</kw>
+<doc>Mobiiliga sisse ja välja logimine</doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.234" critical="yes" status="FAIL" starttime="20150130 14:00:29.232">No keyword with name 'Open Browser' found.</status>
+</test>
+<test name="Ametnikuna sisse logimine" id="s1-t2">
+<kw type="kw" name="Open Browser">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}</arg>
+<arg>${LEHITSEJA}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.235" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status endtime="20150130 14:00:29.235" status="FAIL" starttime="20150130 14:00:29.235"></status>
+</kw>
+<doc>Ametnikuna sisse logimine</doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.235" critical="yes" status="FAIL" starttime="20150130 14:00:29.234">No keyword with name 'Open Browser' found.</status>
+</test>
+<test name="Komponendid - ava leht" id="s1-t3">
+<kw type="kw" name="Ava leht">
+<doc>Lehe aadressipõhine avamine. Aadressisse lisatakse automaatselt keele viide (et)</doc>
+<arguments>
+<arg>/admin/test/test-event</arg>
+</arguments>
+<kw type="kw" name="Go To">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}et${rada}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.238" level="FAIL">No keyword with name 'Go To' found.</msg>
+<status endtime="20150130 14:00:29.238" status="FAIL" starttime="20150130 14:00:29.238"></status>
+</kw>
+<status endtime="20150130 14:00:29.238" status="FAIL" starttime="20150130 14:00:29.237"></status>
+</kw>
+<doc>Raamistiku erinevate komponentide testid</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.239" critical="yes" status="FAIL" starttime="20150130 14:00:29.236">No keyword with name 'Go To' found.</status>
+</test>
+<test name="Komponendid - Sündmused" id="s1-t4">
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Sündmus link ilma kinnituseta</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.241" level="INFO">Sündmus link ilma kinnituseta</msg>
+<status endtime="20150130 14:00:29.241" status="PASS" starttime="20150130 14:00:29.241"></status>
+</kw>
+<status endtime="20150130 14:00:29.241" status="PASS" starttime="20150130 14:00:29.240"></status>
+</kw>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>xpath=(//*[@id='content']/table/tbody/tr[1]/td[1]/a)</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.241" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:29.241" status="FAIL" starttime="20150130 14:00:29.241"></status>
+</kw>
+<doc>Erinevate sündmuste leht</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.241" critical="yes" status="FAIL" starttime="20150130 14:00:29.239">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Komponendid - Modaalaknad" id="s1-t5">
+<kw type="kw" name="Click Element">
+<doc></doc>
+<arguments>
+<arg>xpath=(//*[@id='subnav']/li[2]/a)</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.243" level="FAIL">No keyword with name 'Click Element' found.</msg>
+<status endtime="20150130 14:00:29.243" status="FAIL" starttime="20150130 14:00:29.243"></status>
+</kw>
+<doc>Modaalakende funktsionaalsus</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.243" critical="yes" status="FAIL" starttime="20150130 14:00:29.242">No keyword with name 'Click Element' found.</status>
+</test>
+<test name="Komponendid - Parameetrid" id="s1-t6">
+<kw type="kw" name="Click Element">
+<doc></doc>
+<arguments>
+<arg>xpath=(//*[@id='subnav']/li[3]/a)</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.245" level="FAIL">No keyword with name 'Click Element' found.</msg>
+<status endtime="20150130 14:00:29.245" status="FAIL" starttime="20150130 14:00:29.244"></status>
+</kw>
+<doc>Parameetrite test</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.245" critical="yes" status="FAIL" starttime="20150130 14:00:29.244">No keyword with name 'Click Element' found.</status>
+</test>
+<test name="Komponendid - Vorm" id="s1-t7">
+<kw type="kw" name="Ava leht">
+<doc>Lehe aadressipõhine avamine. Aadressisse lisatakse automaatselt keele viide (et)</doc>
+<arguments>
+<arg>/admin/test/test-vorm</arg>
+</arguments>
+<kw type="kw" name="Go To">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}et${rada}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.247" level="FAIL">No keyword with name 'Go To' found.</msg>
+<status endtime="20150130 14:00:29.247" status="FAIL" starttime="20150130 14:00:29.247"></status>
+</kw>
+<status endtime="20150130 14:00:29.247" status="FAIL" starttime="20150130 14:00:29.246"></status>
+</kw>
+<doc>Vormi test</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.247" critical="yes" status="FAIL" starttime="20150130 14:00:29.245">No keyword with name 'Go To' found.</status>
+</test>
+<test name="Komponendid - Listid" id="s1-t8">
+<kw type="kw" name="Click Element">
+<doc></doc>
+<arguments>
+<arg>xpath=(//*[@id='subnav']/li[5]/a)</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.249" level="FAIL">No keyword with name 'Click Element' found.</msg>
+<status endtime="20150130 14:00:29.249" status="FAIL" starttime="20150130 14:00:29.249"></status>
+</kw>
+<doc>Listide test</doc>
+<tags>
+<tag>komponendid</tag>
+</tags>
+<status endtime="20150130 14:00:29.249" critical="yes" status="FAIL" starttime="20150130 14:00:29.248">No keyword with name 'Click Element' found.</status>
+</test>
+<test name="Admin - Kliendi otsing" id="s1-t9">
+<kw type="kw" name="Ava leht">
+<doc>Lehe aadressipõhine avamine. Aadressisse lisatakse automaatselt keele viide (et)</doc>
+<arguments>
+<arg>/admin/kliendid/otsing</arg>
+</arguments>
+<kw type="kw" name="Go To">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}et${rada}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.252" level="FAIL">No keyword with name 'Go To' found.</msg>
+<status endtime="20150130 14:00:29.252" status="FAIL" starttime="20150130 14:00:29.252"></status>
+</kw>
+<status endtime="20150130 14:00:29.252" status="FAIL" starttime="20150130 14:00:29.251"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.252" critical="yes" status="FAIL" starttime="20150130 14:00:29.250">No keyword with name 'Go To' found.</status>
+</test>
+<test name="Admin - Süsteemse parameetri otsing" id="s1-t10">
+<kw type="kw" name="Ava administraatori menüüpunkt">
+<doc>Navigeerime administraator menüüpunktis</doc>
+<arguments>
+<arg>Haldus</arg>
+<arg>Süsteemsed parameetrid</arg>
+</arguments>
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Liigume administraatori menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.255" level="INFO">Liigume administraatori menüüpunkti</msg>
+<status endtime="20150130 14:00:29.255" status="PASS" starttime="20150130 14:00:29.255"></status>
+</kw>
+<status endtime="20150130 14:00:29.255" status="PASS" starttime="20150130 14:00:29.254"></status>
+</kw>
+<kw type="kw" name="Page Should Contain Element">
+<doc></doc>
+<arguments>
+<arg>adminbar</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.255" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<status endtime="20150130 14:00:29.256" status="FAIL" starttime="20150130 14:00:29.255"></status>
+</kw>
+<status endtime="20150130 14:00:29.256" status="FAIL" starttime="20150130 14:00:29.253"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.256" critical="yes" status="FAIL" starttime="20150130 14:00:29.253">No keyword with name 'Page Should Contain Element' found.</status>
+</test>
+<test name="Admin - Kasutajate rollide määramine" id="s1-t11">
+<kw type="kw" name="Ava administraatori menüüpunkt">
+<doc>Navigeerime administraator menüüpunktis</doc>
+<arguments>
+<arg>Haldus</arg>
+<arg>Kasutajad</arg>
+</arguments>
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Liigume administraatori menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.259" level="INFO">Liigume administraatori menüüpunkti</msg>
+<status endtime="20150130 14:00:29.259" status="PASS" starttime="20150130 14:00:29.259"></status>
+</kw>
+<status endtime="20150130 14:00:29.259" status="PASS" starttime="20150130 14:00:29.258"></status>
+</kw>
+<kw type="kw" name="Page Should Contain Element">
+<doc></doc>
+<arguments>
+<arg>adminbar</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.259" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<status endtime="20150130 14:00:29.259" status="FAIL" starttime="20150130 14:00:29.259"></status>
+</kw>
+<status endtime="20150130 14:00:29.259" status="FAIL" starttime="20150130 14:00:29.257"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.260" critical="yes" status="FAIL" starttime="20150130 14:00:29.256">No keyword with name 'Page Should Contain Element' found.</status>
+</test>
+<test name="Admin - Rollide muutmine" id="s1-t12">
+<kw type="kw" name="Ava administraatori menüüpunkt">
+<doc>Navigeerime administraator menüüpunktis</doc>
+<arguments>
+<arg>Haldus</arg>
+<arg>Rollid</arg>
+</arguments>
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Liigume administraatori menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.263" level="INFO">Liigume administraatori menüüpunkti</msg>
+<status endtime="20150130 14:00:29.263" status="PASS" starttime="20150130 14:00:29.262"></status>
+</kw>
+<status endtime="20150130 14:00:29.263" status="PASS" starttime="20150130 14:00:29.262"></status>
+</kw>
+<kw type="kw" name="Page Should Contain Element">
+<doc></doc>
+<arguments>
+<arg>adminbar</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.263" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<status endtime="20150130 14:00:29.263" status="FAIL" starttime="20150130 14:00:29.263"></status>
+</kw>
+<status endtime="20150130 14:00:29.263" status="FAIL" starttime="20150130 14:00:29.261"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.263" critical="yes" status="FAIL" starttime="20150130 14:00:29.260">No keyword with name 'Page Should Contain Element' found.</status>
+</test>
+<test name="Admin - Teenuste haldus" id="s1-t13">
+<kw type="kw" name="Ava administraatori menüüpunkt">
+<doc>Navigeerime administraator menüüpunktis</doc>
+<arguments>
+<arg>Teenused</arg>
+<arg>Teenuste haldus</arg>
+</arguments>
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Liigume administraatori menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.266" level="INFO">Liigume administraatori menüüpunkti</msg>
+<status endtime="20150130 14:00:29.266" status="PASS" starttime="20150130 14:00:29.266"></status>
+</kw>
+<status endtime="20150130 14:00:29.267" status="PASS" starttime="20150130 14:00:29.265"></status>
+</kw>
+<kw type="kw" name="Page Should Contain Element">
+<doc></doc>
+<arguments>
+<arg>adminbar</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.267" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<status endtime="20150130 14:00:29.267" status="FAIL" starttime="20150130 14:00:29.267"></status>
+</kw>
+<status endtime="20150130 14:00:29.267" status="FAIL" starttime="20150130 14:00:29.265"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.267" critical="yes" status="FAIL" starttime="20150130 14:00:29.264">No keyword with name 'Page Should Contain Element' found.</status>
+</test>
+<test name="Admin - Loendid" id="s1-t14">
+<kw type="kw" name="Ava leht">
+<doc>Lehe aadressipõhine avamine. Aadressisse lisatakse automaatselt keele viide (et)</doc>
+<arguments>
+<arg>/admin/domain/list</arg>
+</arguments>
+<kw type="kw" name="Go To">
+<doc></doc>
+<arguments>
+<arg>${AADRESS}et${rada}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.272" level="FAIL">No keyword with name 'Go To' found.</msg>
+<status endtime="20150130 14:00:29.272" status="FAIL" starttime="20150130 14:00:29.272"></status>
+</kw>
+<status endtime="20150130 14:00:29.272" status="FAIL" starttime="20150130 14:00:29.271"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.272" critical="yes" status="FAIL" starttime="20150130 14:00:29.270">No keyword with name 'Go To' found.</status>
+</test>
+<test name="Vigane uue kliendi lisamine" id="s1-t15">
+<kw type="kw" name="Ava administraatori menüüpunkt">
+<doc>Navigeerime administraator menüüpunktis</doc>
+<arguments>
+<arg>Kliendid</arg>
+<arg>Uue kliendi registreerimine</arg>
+</arguments>
+<kw type="kw" name="logi-info">
+<doc>Logisse teate kirjutamine</doc>
+<arguments>
+<arg>Liigume administraatori menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${sõnum}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.276" level="INFO">Liigume administraatori menüüpunkti</msg>
+<status endtime="20150130 14:00:29.276" status="PASS" starttime="20150130 14:00:29.275"></status>
+</kw>
+<status endtime="20150130 14:00:29.276" status="PASS" starttime="20150130 14:00:29.275"></status>
+</kw>
+<kw type="kw" name="Page Should Contain Element">
+<doc></doc>
+<arguments>
+<arg>adminbar</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.276" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<status endtime="20150130 14:00:29.276" status="FAIL" starttime="20150130 14:00:29.276"></status>
+</kw>
+<status endtime="20150130 14:00:29.276" status="FAIL" starttime="20150130 14:00:29.274"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.277" critical="yes" status="FAIL" starttime="20150130 14:00:29.273">No keyword with name 'Page Should Contain Element' found.</status>
+</test>
+<test name="Logi välja ja sisene kliendina" id="s1-t16">
+<kw type="kw" name="Välja logimine">
+<doc>Logime kasutaja süsteemist välja</doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>Logi välja</arg>
+</arguments>
+<msg timestamp="20150130 14:00:29.279" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:29.279" status="FAIL" starttime="20150130 14:00:29.279"></status>
+</kw>
+<status endtime="20150130 14:00:29.279" status="FAIL" starttime="20150130 14:00:29.278"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:29.280" critical="yes" status="FAIL" starttime="20150130 14:00:29.278">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Aadressi lisamine ja kustutamine" id="s1-t17">
+<kw type="kw" name="Kuvale minemine">
+<doc></doc>
+<arguments>
+<arg>Minu andmed</arg>
+<arg>Põhiandmed</arg>
+</arguments>
+<kw type="kw" name="paus">
+<doc>Teeme pausi... kasuta erandjuhtudel!</doc>
+<arguments>
+<arg>Avame menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${kommentaar}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:33.283" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20150130 14:00:33.283" level="INFO">Avame menüüpunkti</msg>
+<status endtime="20150130 14:00:33.283" status="PASS" starttime="20150130 14:00:29.283"></status>
+</kw>
+<status endtime="20150130 14:00:33.284" status="PASS" starttime="20150130 14:00:29.282"></status>
+</kw>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>${Menüüpunkt}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:33.285" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:33.285" status="FAIL" starttime="20150130 14:00:33.284"></status>
+</kw>
+<status endtime="20150130 14:00:33.285" status="FAIL" starttime="20150130 14:00:29.281"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:33.286" critical="yes" status="FAIL" starttime="20150130 14:00:29.280">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Teenuse valimine" id="s1-t18">
+<kw type="kw" name="Kuvale minemine">
+<doc></doc>
+<arguments>
+<arg>Teenused</arg>
+<arg>Teenused valdkondade kaupa</arg>
+</arguments>
+<kw type="kw" name="paus">
+<doc>Teeme pausi... kasuta erandjuhtudel!</doc>
+<arguments>
+<arg>Avame menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${kommentaar}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:37.302" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20150130 14:00:37.302" level="INFO">Avame menüüpunkti</msg>
+<status endtime="20150130 14:00:37.302" status="PASS" starttime="20150130 14:00:33.301"></status>
+</kw>
+<status endtime="20150130 14:00:37.303" status="PASS" starttime="20150130 14:00:33.297"></status>
+</kw>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>${Menüüpunkt}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:37.304" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:37.304" status="FAIL" starttime="20150130 14:00:37.303"></status>
+</kw>
+<status endtime="20150130 14:00:37.304" status="FAIL" starttime="20150130 14:00:33.294"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:37.306" critical="yes" status="FAIL" starttime="20150130 14:00:33.289">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Volitatava otsing" id="s1-t19">
+<kw type="kw" name="Kuvale minemine">
+<doc></doc>
+<arguments>
+<arg>Minu andmed</arg>
+<arg>Volitused</arg>
+</arguments>
+<kw type="kw" name="paus">
+<doc>Teeme pausi... kasuta erandjuhtudel!</doc>
+<arguments>
+<arg>Avame menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${kommentaar}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:41.320" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20150130 14:00:41.320" level="INFO">Avame menüüpunkti</msg>
+<status endtime="20150130 14:00:41.320" status="PASS" starttime="20150130 14:00:37.319"></status>
+</kw>
+<status endtime="20150130 14:00:41.320" status="PASS" starttime="20150130 14:00:37.316"></status>
+</kw>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>${Menüüpunkt}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:41.320" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:41.320" status="FAIL" starttime="20150130 14:00:41.320"></status>
+</kw>
+<status endtime="20150130 14:00:41.320" status="FAIL" starttime="20150130 14:00:37.312"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:41.321" critical="yes" status="FAIL" starttime="20150130 14:00:37.308">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Teated klient" id="s1-t20">
+<kw type="kw" name="Kuvale minemine">
+<doc></doc>
+<arguments>
+<arg>Teated</arg>
+<arg>Saabunud teated</arg>
+</arguments>
+<kw type="kw" name="paus">
+<doc>Teeme pausi... kasuta erandjuhtudel!</doc>
+<arguments>
+<arg>Avame menüüpunkti</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${kommentaar}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:45.324" level="INFO">Slept 4 seconds</msg>
+<msg timestamp="20150130 14:00:45.324" level="INFO">Avame menüüpunkti</msg>
+<status endtime="20150130 14:00:45.324" status="PASS" starttime="20150130 14:00:41.324"></status>
+</kw>
+<status endtime="20150130 14:00:45.325" status="PASS" starttime="20150130 14:00:41.323"></status>
+</kw>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>${Menüüpunkt}</arg>
+</arguments>
+<msg timestamp="20150130 14:00:45.326" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:45.326" status="FAIL" starttime="20150130 14:00:45.325"></status>
+</kw>
+<status endtime="20150130 14:00:45.327" status="FAIL" starttime="20150130 14:00:41.322"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:45.328" critical="yes" status="FAIL" starttime="20150130 14:00:41.321">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Välja logimine ja akna sulgemine" id="s1-t21">
+<kw type="kw" name="Välja logimine">
+<doc>Logime kasutaja süsteemist välja</doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Click Link">
+<doc></doc>
+<arguments>
+<arg>Logi välja</arg>
+</arguments>
+<msg timestamp="20150130 14:00:45.338" level="FAIL">No keyword with name 'Click Link' found.</msg>
+<status endtime="20150130 14:00:45.338" status="FAIL" starttime="20150130 14:00:45.337"></status>
+</kw>
+<status endtime="20150130 14:00:45.338" status="FAIL" starttime="20150130 14:00:45.334"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:45.339" critical="yes" status="FAIL" starttime="20150130 14:00:45.330">No keyword with name 'Click Link' found.</status>
+</test>
+<test name="Close" id="s1-t22">
+<kw type="kw" name="Close All Browsers">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150130 14:00:45.346" level="FAIL">No keyword with name 'Close All Browsers' found.</msg>
+<status endtime="20150130 14:00:45.346" status="FAIL" starttime="20150130 14:00:45.346"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status endtime="20150130 14:00:45.347" critical="yes" status="FAIL" starttime="20150130 14:00:45.342">No keyword with name 'Close All Browsers' found.</status>
+</test>
+<kw type="teardown" name="Teardown">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Close All Browsers">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150130 14:00:45.357" level="FAIL">No keyword with name 'Close All Browsers' found.</msg>
+<status endtime="20150130 14:00:45.357" status="FAIL" starttime="20150130 14:00:45.356"></status>
+</kw>
+<status endtime="20150130 14:00:45.357" status="FAIL" starttime="20150130 14:00:45.353">No keyword with name 'Close All Browsers' found.</status>
+</kw>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20150130 14:00:45.358" status="FAIL" starttime="20150130 14:00:29.195">Suite teardown failed:
+No keyword with name 'Close All Browsers' found.</status>
+</suite>
+<statistics>
+<total>
+<stat fail="22" pass="0">Critical Tests</stat>
+<stat fail="22" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="6" combined="" pass="0" info="" doc="" links="">komponendid</stat>
+</tag>
+<suite>
+<stat fail="22" pass="0" name="EPM" id="s1">EPM</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20150130 14:00:29.229" level="ERROR">Error in file 'C:\Development\workspace\java\epm\EPM\test\epm_rf_tests\EPM.txt': Importing test library '/usr/lib/python2.6/site-packages/Selenium2Library' failed: File or directory does not exist.</msg>
+<msg timestamp="20150130 14:00:29.230" level="ERROR">Error in file 'C:\Development\workspace\java\epm\EPM\test\epm_rf_tests\EPM.txt': Test library '\usr\lib\python2.6\site-packages\decorator.py' does not exist.</msg>
+<msg timestamp="20150130 14:00:29.231" level="ERROR">Error in file 'C:\Development\workspace\java\epm\EPM\test\epm_rf_tests\EPM.txt': Test library '..\Lib\site-packages\decorator-3.4.0-py2.7.egg\decorator.py' does not exist.</msg>
+<msg timestamp="20150130 14:00:29.232" level="ERROR">Error in file 'C:\Development\workspace\java\epm\EPM\test\epm_rf_tests\EPM.txt': Test library '..\Lib\site-packages\Selenium2Library' does not exist.</msg>
+</errors>
+</robot>

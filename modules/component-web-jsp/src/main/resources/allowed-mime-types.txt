@@ -1,0 +1,28 @@
+# archive
+application/x-7z-compressed
+application/x-ace-compressed
+application/x-tar
+application/x-bzip
+application/x-bzip2
+application/zip
+
+# document
+application/x-abiword
+application/vnd.ms-powerpoint
+application/vnd.ms-project
+application/msword
+application/x-mswrite
+application/vnd.ms-works
+application/rtf
+application/vnd.ms-excel
+application/vnd.openxmlformats-officedocument.wordprocessingml.document
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+# pictures
+image/.*
+
+# text
+text/.*
+
+# other
+application/pdf

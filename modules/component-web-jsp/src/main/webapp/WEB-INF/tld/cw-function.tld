@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+
+   <description>CW function Library</description>
+   <tlib-version>1.0</tlib-version> 
+   <short-name>CW-function</short-name>
+   
+   <function>
+        <name>instanceOf</name>
+        <function-class>com.nortal.spring.cw.jsp.web.tag.TagUtils</function-class>
+        <function-signature>boolean instanceOf(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>hasProperty</name>
+        <function-class>com.nortal.spring.cw.jsp.web.tag.TagUtils</function-class>
+        <function-signature>boolean hasProperty(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+   
+</taglib>

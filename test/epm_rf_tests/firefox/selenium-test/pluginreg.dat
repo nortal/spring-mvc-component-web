@@ -1,0 +1,224 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version|0.16|$
+Arch|x86-msvc|$
+
+[PLUGINS]
+NPSWF32_11_8_800_168.dll|$
+C:\windows\SysWOW64\Macromed\Flash\NPSWF32_11_8_800_168.dll|$
+11.8.800.168|$
+1378908972789|0|0|$
+Shockwave Flash 11.8 r800|$
+Shockwave Flash|$
+2
+0|application/x-shockwave-flash|Adobe Flash movie|swf|$
+1|application/futuresplash|FutureSplash movie|spl|$
+npesteid-firefox-plugin.dll|$
+C:\Program Files (x86)\Estonian ID Card\npesteid-firefox-plugin.dll|$
+3.7.2.1106|$
+1376575066000|0|0|$
+Allows digital signing with Estonian ID cards|$
+EstEID Firefox plug-in|$
+2
+0|application/x-digidoc|||$
+1|application/x-idcard-plugin|||$
+npqtplugin5.dll|$
+C:\Program Files (x86)\QuickTime\Plugins\npqtplugin5.dll|$
+7.7.4.0|$
+1374733512413|0|0|$
+The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.|$
+QuickTime Plug-in 7.7.4|$
+7
+0|application/x-mpeg|AMC media|amc|$
+1|video/mp4|MPEG-4 media|mp4|$
+2|audio/mp4|MPEG-4 media|mp4|$
+3|audio/x-m4a|AAC audio|m4a|$
+4|audio/x-m4p|AAC audio|m4p|$
+5|audio/x-m4b|AAC audio book|m4b|$
+6|video/x-m4v|Video|m4v|$
+npqtplugin4.dll|$
+C:\Program Files (x86)\QuickTime\Plugins\npqtplugin4.dll|$
+7.7.4.0|$
+1374733510908|0|0|$
+The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.|$
+QuickTime Plug-in 7.7.4|$
+7
+0|audio/mpeg|MPEG audio|mpeg,mpg,m1s,m1a,mp2,mpm,mpa,m2a|$
+1|audio/x-mpeg|MPEG audio|mpeg,mpg,m1s,m1a,mp2,mpm,mpa,m2a|$
+2|video/3gpp|3GPP media|3gp,3gpp|$
+3|audio/3gpp|3GPP media|3gp,3gpp|$
+4|video/3gpp2|3GPP2 media|3g2,3gp2|$
+5|audio/3gpp2|3GPP2 media|3g2,3gp2|$
+6|video/sd-video|SD video|sdv|$
+npqtplugin3.dll|$
+C:\Program Files (x86)\QuickTime\Plugins\npqtplugin3.dll|$
+7.7.4.0|$
+1374733510385|0|0|$
+The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.|$
+QuickTime Plug-in 7.7.4|$
+5
+0|audio/x-aac|AAC audio|aac,adts|$
+1|audio/x-caf|CAF audio|caf|$
+2|audio/x-ac3|AC3 audio|ac3|$
+3|video/x-mpeg|MPEG media|mpeg,mpg,m1s,m1v,m1a,m75,m15,mp2,mpm,mpv,mpa|$
+4|video/mpeg|MPEG media|mpeg,mpg,m1s,m1v,m1a,m75,m15,mp2,mpm,mpv,mpa|$
+npqtplugin2.dll|$
+C:\Program Files (x86)\QuickTime\Plugins\npqtplugin2.dll|$
+7.7.4.0|$
+1374733509978|0|0|$
+The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.|$
+QuickTime Plug-in 7.7.4|$
+8
+0|audio/aiff|AIFF audio|aiff,aif,aifc,cdda|$
+1|audio/x-aiff|AIFF audio|aiff,aif,aifc,cdda|$
+2|audio/basic|uLaw/AU audio|au,snd,ulw|$
+3|audio/mid|MIDI|mid,midi,smf,kar|$
+4|audio/vnd.qcelp|QUALCOMM PureVoice audio|qcp|$
+5|audio/x-gsm|GSM audio|gsm|$
+6|audio/AMR|AMR audio|AMR|$
+7|audio/aac|AAC audio|aac,adts|$
+npqtplugin.dll|$
+C:\Program Files (x86)\QuickTime\Plugins\npqtplugin.dll|$
+7.7.4.0|$
+1374733508973|0|0|$
+The QuickTime Plugin allows you to view a wide variety of multimedia content in Web pages. For more information, visit the <A HREF=http://www.apple.com/quicktime/>QuickTime</A> Web site.|$
+QuickTime Plug-in 7.7.4|$
+7
+0|application/sdp|SDP stream descriptor|sdp|$
+1|application/x-sdp|SDP stream descriptor|sdp|$
+2|application/x-rtsp|RTSP stream descriptor|rtsp,rts|$
+3|video/quicktime|QuickTime Movie|mov,qt,mqv|$
+4|video/flc|AutoDesk Animator|flc,fli,cel|$
+5|audio/x-wav|WAVE audio|wav,bwf|$
+6|audio/wav|WAVE audio|wav,bwf|$
+npGoogleUpdate3.dll|$
+C:\Users\margush\AppData\Local\Google\Update\1.3.21.153\npGoogleUpdate3.dll|$
+1.3.21.153|$
+1373989464866|0|0|$
+Google Update|$
+Google Update|$
+2
+0|application/x-vnd.google.update3webcontrol.3|||$
+1|application/x-vnd.google.oneclickctrl.9|||$
+npGoogleUpdate3.dll|$
+C:\Program Files (x86)\Google\Update\1.3.21.153\npGoogleUpdate3.dll|$
+1.3.21.153|$
+1373649062063|0|0|$
+Google Update|$
+Google Update|$
+2
+0|application/x-vnd.google.update3webcontrol.3|||$
+1|application/x-vnd.google.oneclickctrl.9|||$
+npctrl.dll|$
+C:\Program Files (x86)\Microsoft Silverlight\5.1.20513.0\npctrl.dll|$
+5.1.20513.0|$
+1368447276000|0|0|$
+5.1.20513.0|$
+Silverlight Plug-In|$
+2
+0|application/x-silverlight|npctrl|scr|$
+1|application/x-silverlight-2|||$
+npitunes.dll|$
+C:\Program Files (x86)\iTunes\Mozilla Plugins\npitunes.dll|$
+1.0.1.1|$
+1365381094000|0|0|$
+iTunes Detector Plug-in|$
+iTunes Application Detector|$
+1
+0|application/itunes-plugin|This plug-in detects the presence of iTunes when opening iTunes Store URLs in a web page with Firefox.||$
+npFoxitReaderPlugin.dll|$
+C:\Program Files (x86)\Foxit Software\Foxit Reader\plugins\npFoxitReaderPlugin.dll|$
+2.2.3.111|$
+1357906984000|0|0|$
+Foxit Reader Plug-In For Firefox and Netscape|$
+Foxit Reader Plugin for Mozilla|$
+2
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.fdf|||$
+NPSPWRAP.DLL|$
+C:\PROGRA~2\MICROS~1\Office15\NPSPWRAP.DLL|$
+15.0.4420.1017|$
+1349113092000|0|0|$
+The plugin allows you to have a better experience with Microsoft SharePoint|$
+Microsoft Office 2013|$
+2
+0|application/x-sharepoint|SharePoint Plug-in for Firefox||$
+1|application/x-sharepoint-uc|||$
+npUnity3D32.dll|$
+C:\Users\margush\AppData\LocalLow\Unity\WebPlayer\loader\npUnity3D32.dll|$
+3.5.1.43663|$
+1332887788000|0|0|$
+Unity Player 3.5.1f2|$
+Unity Player|$
+1
+0|application/vnd.unity|Unity Player datafile|unity3d|$
+npdeployJava1.dll|$
+D:\Development\JAVA\6\x32\jre\bin\new_plugin\npdeployJava1.dll|$
+6.0.290.11|$
+1319189239630|0|0|$
+NPRuntime Script Plug-in Library for Java(TM) Deploy|$
+Java Deployment Toolkit 6.0.290.11|$
+1
+0|application/java-deployment-toolkit|||$
+npjp2.dll|$
+D:\Development\JAVA\6\x32\jre\bin\new_plugin\npjp2.dll|$
+6.0.290.11|$
+1319189239626|0|0|$
+Next Generation Java Plug-in 1.6.0_29 for Mozilla browsers|$
+Java(TM) Platform SE 6 U29|$
+34
+0|application/x-java-applet|Java Applet||$
+1|application/x-java-bean|JavaBeans||$
+2|application/x-java-vm|||$
+3|application/x-java-applet;version=1.1.1|||$
+4|application/x-java-bean;version=1.1.1|||$
+5|application/x-java-applet;version=1.1|||$
+6|application/x-java-bean;version=1.1|||$
+7|application/x-java-applet;version=1.2|||$
+8|application/x-java-bean;version=1.2|||$
+9|application/x-java-applet;version=1.1.3|||$
+10|application/x-java-bean;version=1.1.3|||$
+11|application/x-java-applet;version=1.1.2|||$
+12|application/x-java-bean;version=1.1.2|||$
+13|application/x-java-applet;version=1.3|||$
+14|application/x-java-bean;version=1.3|||$
+15|application/x-java-applet;version=1.2.2|||$
+16|application/x-java-bean;version=1.2.2|||$
+17|application/x-java-applet;version=1.2.1|||$
+18|application/x-java-bean;version=1.2.1|||$
+19|application/x-java-applet;version=1.3.1|||$
+20|application/x-java-bean;version=1.3.1|||$
+21|application/x-java-applet;version=1.4|||$
+22|application/x-java-bean;version=1.4|||$
+23|application/x-java-applet;version=1.4.1|||$
+24|application/x-java-bean;version=1.4.1|||$
+25|application/x-java-applet;version=1.4.2|||$
+26|application/x-java-bean;version=1.4.2|||$
+27|application/x-java-applet;version=1.5|||$
+28|application/x-java-bean;version=1.5|||$
+29|application/x-java-applet;version=1.6|||$
+30|application/x-java-bean;version=1.6|||$
+31|application/x-java-applet;jpi-version=1.6.0_29|||$
+32|application/x-java-bean;jpi-version=1.6.0_29|||$
+33|application/x-java-vm-npruntime|||$
+npWatWeb.dll|$
+C:\windows\system32\Wat\npWatWeb.dll|$
+7.1.7600.16395|$
+1283558569654|0|0|$
+Windows Activation Technologies Plugin for Mozilla|$
+Windows Activation Technologies|$
+1
+0|application/mozilla-wat-scriptable-plugin-11|Windows Activation Technologies|*|$
+npOLW.dll|$
+C:\Program Files (x86)\Microsoft\Office Live\npOLW.dll|$
+2.0.4024.1|$
+1272269198000|0|0|$
+Office Live Update v1.5|$
+Microsoft Office Live Plug-in for Firefox|$
+1
+0|application/OfficeLive|Office Live Update v1.5||$
+
+[INVALID]
+C:\Program Files (x86)\Microsoft Silverlight\5.1.20513.0\npctrlui.dll|$
+1368447276000|$

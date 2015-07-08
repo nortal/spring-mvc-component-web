@@ -1,0 +1,638 @@
+*** Settings ***
+Suite Teardown    Teardown
+Resource          selenium-test-conf.html    # Seaded
+Library           /usr/lib/python2.6/site-packages/Selenium2Library     # Tulevikus tuleks see eemaldada, hetkel on vajalik et test töötaks
+Library           /usr/lib/python2.6/site-packages/decorator.py    # Tulevikus tuleks see eemaldada, hetkel on vajalik et test töötaks
+Library           ../Lib/site-packages/decorator-3.4.0-py2.7.egg/decorator.py    #Seadistus vastavalt paigaldusjuhendile https://confluence.webmedia.eu/display/EPM/Selenium+testid+-+Robot+Framework
+Library           ../Lib/site-packages/Selenium2Library/    #Seadistus vastavalt paigaldusjuhendile https://confluence.webmedia.eu/display/EPM/Selenium+testid+-+Robot+Framework
+Library           ../Lib/site-packages/decorator.py
+
+*** Test Cases ***
+Mobiiliga sisse ja välja logimine
+    [Documentation]    Mobiiliga sisse ja välja logimine
+    Open Browser    ${AADRESS}    ${LEHITSEJA}
+    Input Text    phonenumber    ${MOBIIL_ID}
+    Click Link    mobileIdButton
+    Sleep    30    Mobiil-id-ga sisse logimine
+    Click Element    xpath=(//*[@class='type1'])[1]/*/*[1]
+    Välja logimine
+
+Ametnikuna sisse logimine
+    [Documentation]    Ametnikuna sisse logimine
+    Open Browser    ${AADRESS}    ${LEHITSEJA}
+    paus    oota lehte
+    Click Link    viewChangeLink
+    paus    kuva vahetus
+    Input Text    username    ${AMETNIK_KASUTAJA}
+    Input Password    password    ${AMETNIK_PAROOL}
+    Click Link    Sisene
+    Click Link    ${AMETNIK_NIMI}
+    paus    oota
+
+Komponendid - ava leht
+    [Documentation]    Raamistiku erinevate komponentide testid
+    [Tags]    komponendid
+    Ava leht    /admin/test/test-event
+    sleep    2
+    Kuva pealkiri    Sündmused
+
+Komponendid - Sündmused
+    [Documentation]    Erinevate sündmuste leht
+    [Tags]    komponendid
+    logi-info    Sündmus link ilma kinnituseta
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[1]/td[1]/a)
+    paus    ootame lehe uuendamist
+    Leht sisaldab teadet    Käivitus sündmus: eventWithoutConfirmation
+    logi-info    Sündmus nupu ilma kinnituseta
+    Click Button    xpath=(//*[@id='eventWithoutConfirmation'])
+    paus    ootame lehe uuendamist
+    Leht sisaldab teadet    Käivitus sündmus: eventWithoutConfirmation
+    logi-info    Sündmuse link koos kinnitusega
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[2]/td[1]/a)
+    paus    ootame lehe uuendamist
+    dialog-pealkiri-on    Kas valid jah?
+    dialog-katkesta
+    Leht sisaldab teadet    Käivitus sündmus: eventWithConfirmation : valisid 'katkesta'
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[2]/td[1]/a)
+    paus    ootame lehe uuendamist
+    dialoog-jah
+    Leht sisaldab teadet    Käivitus sündmus: eventWithConfirmation : valisid 'jah'
+    logi-info    Sündmuse nupp koos kinnitusega
+    Click Button    xpath=(//*[@id='eventWithConfirmation'])
+    paus    ootame lehe uuendamist
+    dialog-pealkiri-on    Kas valid jah?
+    dialog-katkesta
+    Leht sisaldab teadet    Käivitus sündmus: eventWithConfirmation : valisid 'katkesta'
+    Click Button    xpath=(//*[@id='eventWithConfirmation'])
+    dialoog-jah
+    Leht sisaldab teadet    Käivitus sündmus: eventWithConfirmation : valisid 'jah'
+
+Komponendid - Modaalaknad
+    [Documentation]    Modaalakende funktsionaalsus
+    [Tags]    komponendid
+    Click Element    xpath=(//*[@id='subnav']/li[2]/a)
+    logi-info    Ava tavalise sisuga aken
+    Click Link    xpath=//*[@id='content']/table/tbody/tr[1]/td/a
+    popup-pealkiri-on    components:::popup-with-simple-content:::    Modaalakna pealkiri
+    Element Should Contain    xpath=(//*[@id='components:::popup-with-simple-content:::']/div[2]/p)    Modaalakna sisu. Modaalakna sisu toetab ka HTMLi vormingut
+    popup-katkesta    components:::popup-with-simple-content:::
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-simple-content : valisid 'katkesta'
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[1]/td/a)
+    popup-sulge    components:::popup-with-simple-content:::
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-simple-content : valisid 'sulge'
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[1]/td/a)
+    paus    ${EMPTY}
+    popup-nupp-vajuta    components:::popup-with-simple-content:::    1
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-simple-content : valisid 'jah'
+    logi-info    Ava JSP sisuga aken
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[2]/td/a)
+    popup-pealkiri-on    components:::popup-with-jsp-content:::    Modaalakna pealkiri
+    Element Should Contain    xpath=(//*[@id='components:::popup-with-jsp-content:::']/div[2]/p)    JSP sisu - siia saab lisada erinevaid teisi komponente
+    popup-katkesta    components:::popup-with-jsp-content:::
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-jsp-content : valisid 'katkesta'
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[2]/td/a)
+    popup-sulge    components:::popup-with-jsp-content:::
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-jsp-content : valisid 'sulge'
+    Click Link    xpath=(//*[@id='content']/table/tbody/tr[2]/td/a)
+    paus    ${EMPTY}
+    popup-nupp-vajuta    components:::popup-with-jsp-content:::    1
+    Leht sisaldab teadet    Käivitus sündmus: popup-with-jsp-content : valisid 'jah'
+
+Komponendid - Parameetrid
+    [Documentation]    Parameetrite test
+    [Tags]    komponendid
+    Click Element    xpath=(//*[@id='subnav']/li[3]/a)
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[1]/td)    121
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[2]/td)    23
+    Click Element    xpath=(//*[@id='subnav']/li[3]/ul/li[1]/a)
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[1]/td)    134
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[2]/td)    2
+    Click Element    xpath=(//*[@id='subnav']/li[3]/ul/li[2]/a)
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[1]/td)    133
+    Element Text Should Be    xpath=(//*[@id='content']/table/tbody/tr[2]/td)    232
+    ${/}
+
+Komponendid - Vorm
+    [Documentation]    Vormi test
+    [Tags]    komponendid
+    Ava leht    /admin/test/test-vorm
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::requiredTextField:::'])    ${EMPTY}
+    paus    ootame ära AJAX päringu
+    Click Element    xpath=(//*[@id='pageActionButtonPageSaveEvent'])
+    Element Should Contain    xpath=(//*[@id='components:::vorm:::_elements:::integerField:::_error'])    Sisestatud number ei ole lubatud vahemikus 10-20
+    Element Should Contain    xpath=(//*[@id='components:::vorm:::_elements:::requiredTextField:::_error'])    Kohustuslik
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-date'])    11122013
+    Select From List    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-hour'])    03
+    Select From List    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-minute'])    05
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::dateField:::-date'])    16122013
+    paus    Kuupäeva väli
+    Select From List    xpath=(//*[@id='components:::vorm:::_elements:::timeField:::-hour'])    06
+    Select From List    xpath=(//*[@id='components:::vorm:::_elements:::timeField:::-minute'])    07
+    Click Element    xpath=(//*[@id='content']/table/tbody/tr[4]/td/button)
+    Click Element    xpath=(//*[@id='ui-multiselect-components:::vorm:::_elements:::list:::-option-2'])
+    Click Element    xpath=(//*[@id='ui-multiselect-components:::vorm:::_elements:::list:::-option-6'])
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::integerField:::'])    11
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::requiredTextField:::'])    test
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::decimalField:::'])    11111,4
+    Input Text    xpath=(//*[@id='components:::vorm:::_elements:::longField:::'])    999
+    Click Element    xpath=(//*[@id='pageActionButtonPageSaveEvent'])
+    paus    Ootame salvestamist
+    Leht sisaldab teadet    Salvestamine õnnestus
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-date'])
+    Should Be Equal    ${ret}    11.12.2013
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-hour'])
+    Should Be Equal    ${ret}    03
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::dateTimeField:::-minute'])
+    Should Be Equal    ${ret}    05
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::dateField:::-date'])
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::timeField:::-hour'])
+    Should Be Equal    ${ret}    06
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::timeField:::-minute'])
+    Should Be Equal    ${ret}    07
+    Element Should Contain    xpath=(//*[@id='content']/table/tbody/tr[4]/td/button/span[2])    Valik 11, Valik 10
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::integerField:::'])
+    Should Be Equal    ${ret}    11
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::requiredTextField:::'])
+    Should Be Equal    ${ret}    test
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::decimalField:::'])
+    Should Be Equal    ${ret}    11111,4
+    ${ret}    Get Value    xpath=(//*[@id='components:::vorm:::_elements:::longField:::'])
+    Should Be Equal    ${ret}    999
+
+Komponendid - Listid
+    [Documentation]    Listide test
+    [Tags]    komponendid
+    Click Element    xpath=(//*[@id='subnav']/li[5]/a)
+    Comment    Testime täisarvu veeru järgi järjestamist
+    paus    ${EMPTY}
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::2::']/td[6])    2
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[1]/th[6]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::2::']/td[6])    1,997
+    Comment    Testime kuupäeva järgi filtreerimist
+    Input Text    xpath=(//*[@id='components:::list:::_headers::0::_between_fst-date'])    04032019
+    Input Text    xpath=(//*[@id='components:::list:::_headers::0::_between_snd-date'])    09032019
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Tühistame kuupäeva välja filtri
+    Input Text    xpath=(//*[@id='components:::list:::_headers::0::_between_fst-date'])    00.00.0000
+    Input Text    xpath=(//*[@id='components:::list:::_headers::0::_between_snd-date'])    00.00.0000
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime kellaaja järgi filtreerimist
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_fst-hour'])    22
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_fst-minute'])    07
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_snd-hour'])    23
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_snd-minute'])    15
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::5::']/td[3])    23:04
+    Comment    Tühjendame kellaaja filtri väljad
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_fst-hour'])    00
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_fst-minute'])    00
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_snd-hour'])    00
+    Select From List    xpath=(//*[@id='components:::list:::_headers::1::_between_snd-minute'])    00
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime kuupäeva ja kellaaja järgi filtreerimist
+    Input Text    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-date'])    21.09.2013
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-hour'])    06
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-minute'])    36
+    Input Text    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-date'])    21.09.2013
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-hour'])    06
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-minute'])    38
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(.//*[@id='components:::list:::_rows::1::']/td[4])    21.09.2013 06:36
+    Comment    Tühjendame kuupäeva ja kellaaja filtri väljad
+    Input Text    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-date'])    00.00.0000
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-hour'])    00
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_fst-minute'])    00
+    Input Text    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-date'])    00.00.0000
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-hour'])    00
+    Select From List    xpath=(//*[@id='components:::list:::_headers::2::_between_snd-minute'])    00
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime reaalarvu järgi filtreerimist
+    Input Text    xpath=(//*[@id='components:::list:::_headers::3::_between_fst'])    2 636,04
+    Input Text    xpath=(//*[@id='components:::list:::_headers::3::_between_snd'])    2 634,72
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::1::']/td[5])    2,634.73
+    Comment    Tühjendame reaalarvu filtri väljad
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::3::_between_fst'])    ${EMPTY}
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::3::_between_snd'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime täisarvu järgi filtreerimist
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::4::_between_fst'])    1 990
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::4::_between_snd'])    1 995
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::2::']/td[6])    1,993
+    Comment    Tühjendame täisarvu filtri väljad
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::4::_between_fst'])    ${EMPTY}
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::4::_between_snd'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime suure täisarvu järgi filtreerimist
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::5::_between_fst'])    3 920
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::5::_between_snd'])    3 930
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::4::']/td[7])    3,922
+    Comment    Tühjendame suure täisarvu filtri väljad
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::5::_between_fst'])    ${EMPTY}
+    Input Text    xpath=(.//*[@id='components:::list:::_headers::5::_between_snd'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime teskti välja järgi filtreerimist
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    Tekst - 1966
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::0::']/td[8])    Tekst - 1966
+    Comment    Tühjendame teskti välja filtri väljad
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Testime lehe kaupa kuvamist
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/ul/li[5]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    28.
+    Comment    Liigume esimesele lehele
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/ul/li[1]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    8.
+    Comment    Liigume viimasele lehele
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/ul/li[12]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    1998.
+    Comment    Liigume eelmisele lehele
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/ul/li[2]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    1988.
+    Comment    Liigume järgmisele lehele
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/ul/li[10]/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    1998.
+    Comment    Vaatame kõiki andmeid korraga
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/p/a)
+    sleep    15
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::1999::']/td[1])    2000.
+    Comment    Vaatame lehtede kaupa
+    Click Element    xpath=(//*[@id='components:::list:::.pagination']/p/a)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::7::']/td[1])    8.
+    Comment    Kustutame rea
+    Click Element    xpath=(//*[@id='components:::list:::_rows::2::']/td[9]/a[2])
+    paus    ootame kuni angular on oma töö ära teinud
+    logi-info    Dialoog akna sulgemine 'Jah' lingi vahendusel
+    Page Should Contain Element    xpath=(//*[@id='confirmationModalDialog'])    Dialoog aken ei ole avatud
+    Click Button    xpath=(//*[@id='confirmationModalDialog']/div/p[1]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Click Element    xpath=(//*[@id='components:::list:::_rows::1::']/td[9]/a[1])
+    Input Text    xpath=(//*[@id='components:::list:::_rows::1::_elements::6::'])    Muudetud
+    Click Element    xpath=(//*[@id='components:::list:::_rows::1::']/td[9]/a[1])
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Should Contain    xpath=(//*[@id='components:::list:::_rows::1::_elements::4::_error'])    Sisestatud number ei ole lubatud vahemikus 10-20
+    Input Text    xpath=(//*[@id='components:::list:::_rows::1::_elements::4::'])    11
+    Click Element    xpath=(//*[@id='components:::list:::_rows::1::']/td[9]/a[1])
+    paus    ootame kuni angular on oma töö ära teinud
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    Muudetud
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::0::']/td[8])    Muudetud
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Comment    Lisame uue rea
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::0::-date'])    11.11.2011
+    Select From List    xpath=(//*[@id='components:::list:::_newRow_elements::1::-hour'])    11
+    Select From List    xpath=(//*[@id='components:::list:::_newRow_elements::1::-minute'])    30
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::2::-date'])    12.12.2012
+    Select From List    xpath=(//*[@id='components:::list:::_newRow_elements::2::-hour'])    13
+    Select From List    xpath=(//*[@id='components:::list:::_newRow_elements::2::-minute'])    45
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::3::'])    11,13
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::4::'])    15
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::5::'])    6000
+    Input Text    xpath=(//*[@id='components:::list:::_newRow_elements::6::'])    lisatud tekst
+    Click Element    xpath=(//*[@id='components:::list:::']/tfoot/tr/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    lisatud tekst
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ootame kuni angular on oma töö ära teinud
+    Element Text Should Be    xpath=(//*[@id='components:::list:::_rows::0::']/td[8])    lisatud tekst
+    Input Text    xpath=(//*[@id='components:::list:::_headers::6::_element'])    ${EMPTY}
+    Click Element    xpath=(//*[@id='components:::list:::']/thead/tr[2]/td[9]/button)
+    paus    ${EMPTY}
+
+Admin - Kliendi otsing
+    Ava leht    /admin/kliendid/otsing
+    paus    ${EMPTY}
+    Kuva pealkiri    Kliendi otsing
+    Input Text    components:::otsingComp:::_components:::otsingForm:::_elements:::nimi:::    Karl Peedosk
+    Click Button    Otsi
+    paus    ${EMPTY}
+    Page Should Contain Element    components:::otsingResultsList:::_rows::0::
+    Element Text Should Be    xpath=//*[@id='components:::otsingResultsList:::_rows::0::']/*[1]/*[2]    KARL PEEDOSK
+    Input Text    components:::otsingComp:::_components:::otsingForm:::_elements:::nimi:::    ${EMPTY}
+    Input Text    components:::otsingComp:::_components:::otsingForm:::_elements:::kood:::    ${AMETNIK_KASUTAJA}
+    Click Button    Otsi
+    paus    ${EMPTY}
+    Element Text Should Be    xpath=//*[@id='components:::otsingResultsList:::_rows::0::']/*[1]/*[2]    ${AMETNIK_NIMI}
+
+Admin - Süsteemse parameetri otsing
+    Ava administraatori menüüpunkt    Haldus    Süsteemsed parameetrid
+    paus    Kuva vahetus
+    Kuva pealkiri    Süsteemsed parameetrid
+    Input Text    xpath=//*[@id='components:::sysParamList:::_headers::0::_element']    MAX_FAILI_SUURUS
+    Click Button    Otsi
+    paus    Uuendab tabelit
+    Element Text Should Be    xpath=//*[@id='components:::sysParamList:::_rows::0::']/*/*[2]    MAX_FAILI_SUURUS
+
+Admin - Kasutajate rollide määramine
+    Ava administraatori menüüpunkt    Haldus    Kasutajad
+    paus    Kuva vahetus
+    Kuva pealkiri    Kasutajad
+    Input Text    xpath=//*[@id='components:::userList:::_headers::0::_element']    MARTIN SALUS
+    Click Button    Otsi
+    paus    Otsingu tulemused
+    Element Text Should Be    xpath=//*[@id='components:::userList:::_rows::0::']/*[1]    MARTIN SALUS
+    Click Link    Määra rollid
+    paus    Oota modaali
+    Element Text Should Be    xpath=//*[@class='modalpopup-header clear']/h1    Kasutaja rolli määramine
+    Select Checkbox    components:::modalPopup:::_components:::modalPopupForm:::_elements:::checkedRoleIds:::4
+    Click Button    xpath=//*[@class='main']/*
+    paus    Oota modaali
+    Element Text Should Be    xpath=//*[@id='components:::userList:::_rows::0::']/*[4]    TESTROLL
+    Click Link    Määra rollid
+    paus    Oota modaali
+    Element Text Should Be    xpath=//*[@class='modalpopup-header clear']/h1    Kasutaja rolli määramine
+    Unselect Checkbox    components:::modalPopup:::_components:::modalPopupForm:::_elements:::checkedRoleIds:::4
+    paus    Oota modaali
+    Click Button    xpath=//*[@class='main']/*
+    paus    ${EMPTY}
+
+Admin - Rollide muutmine
+    Ava administraatori menüüpunkt    Haldus    Rollid
+    paus    Kuva vahetus
+    Kuva pealkiri    Rollid
+    Input Text    components:::roleList:::_headers::0::_element    TESTROLL
+    Click Button    Otsi
+    paus    Otsing
+    Element Text Should Be    xpath=//*[@id='components:::roleList:::_rows::0::']/*[1]    TESTROLL
+    Click Link    TESTROLL
+    Kuva pealkiri    Roll
+    Click Link    Lisa privileege
+    paus    Modaali avanemine
+    Page Should Contain Element    xpath=//*[@class='modalpopup-header clear']/h1    Modaalaken avanes
+    Input Text    components:::modalWindow:::_components:::modalWindowRolePrivilegeList:::_headers::1::_element    epm.login.user
+    Click Button    xpath=(//*[@id='components:::modalWindow:::_components:::modalWindowRolePrivilegeList:::']/*/*)[2]/*[4]/*
+    paus    Otsing
+    Element Text Should Be    xpath=//*[@id='components:::modalWindow:::_components:::modalWindowRolePrivilegeList:::_rows::0::']/*[2]    epm.login.user
+    Select Checkbox    components:::modalWindow:::_components:::modalWindowRolePrivilegeList:::_rows::0::_elements::0::
+    Click Button    xpath=(//*[@class='main']/*)[2]
+    paus    Modaali sulgemine
+    Element Text Should Be    xpath=(//*[@id='components:::rolePrivilegeList:::_rows::0::']/*)[1]    epm.login.user
+    Click Link    Kustuta
+    paus    Modaali avanemine
+    Page Should Contain Element    xpath=//*[@id='confirmationModalDialog']/h1    Modaalaken avanes
+    Click Button    Jah
+    paus    ${EMPTY}
+    Input Text    components:::roleForm:::_elements:::code:::    ${EMPTY}
+    Input Text    components:::roleForm:::_elements:::code:::    Test2
+    Input text    components:::roleForm:::_elements:::name:::    ${EMPTY}
+    Input Text    components:::roleForm:::_elements:::name:::    Test kirjeldus
+    Click Button    Submit
+    paus    Kuva vahetus
+    Page Should Contain Element    xpath=//*[@class='message msg-ok']/h2
+    Click Link    Tagasi
+    paus    Kuva vahetus
+    Input Text    components:::roleList:::_headers::0::_element    Test2
+    Click Button    Submit
+    paus    Tabeli uuendamine
+    Element Text Should Be    xpath=//*[@id='components:::roleList:::_rows::0::']/*[1]    Test2
+    Element Text Should Be    xpath=//*[@id='components:::roleList:::_rows::0::']/*[2]    Test kirjeldus
+    click link    Test2
+    paus    Kuva vahetus
+    Input Text    components:::roleForm:::_elements:::code:::    ${EMPTY}
+    Input Text    components:::roleForm:::_elements:::code:::    TESTROLL
+    Input text    components:::roleForm:::_elements:::name:::    ${EMPTY}
+    Input Text    components:::roleForm:::_elements:::name:::    Uus lisatud roll
+    Click Button    Submit
+    paus    Kuva vahetus
+
+Admin - Teenuste haldus
+    Ava administraatori menüüpunkt    Teenused    Teenuste haldus
+    paus    Kuva vahetus
+    Kuva pealkiri    Teenuste haldus
+    Select From List    components:::teenusList:::_headers::1::_element    Turukorraldus
+    Click Button    Submit
+    paus    ${EMPTY}
+    Element Text Should Be    xpath=//*[@id='components:::teenusList:::_rows::0::']/*[1]    Tootjaorganisatsiooni poolne sekkumisest teavitamine kala esmakokkuostul
+    Click Link    xpath=//*[@id='components:::teenusList:::_rows::0::']/*[1]/*
+    paus    lehevahetus
+    Input Text    components:::formMallTekst:::_elements:::teenusTekstPealkiri_tekst:::    ${EMPTY}
+    Input Text    components:::formMallTekst:::_elements:::teenusTekstPealkiri_tekst:::    pealkiri
+    Select From List    components:::teenusForm:::_components:::form:::_elements:::valdkond:::    Söödad
+    List Selection Should Be    components:::teenusForm:::_components:::form:::_elements:::valdkond:::    Söödad
+    paus    oota andmeid
+    click button    Salvesta
+    paus    oota uuendusi
+    click link    Tagasi
+    paus    uus leht
+    input text    components:::teenusList:::_headers::0::_element    Tootjaorganisatsiooni poolne sekkumisest teavitamine kala esmakokkuostul
+    Select From List    components:::teenusList:::_headers::1::_element    ${EMPTY}
+    click button    Submit
+    paus    ${EMPTY}
+    Element Text Should Be    xpath=//*[@id='components:::teenusList:::_rows::0::']/*[2]    Söödad
+    click link    xpath=//*[@id='components:::teenusList:::_rows::0::']/*[1]/*
+    paus    lehevahetus
+    Select From List    components:::teenusForm:::_components:::form:::_elements:::valdkond:::    TURUKORRALDUS
+    click button    Salvesta
+    paus    ${EMPTY}
+
+Admin - Loendid
+    Ava leht    /admin/domain/list
+    Kuva pealkiri    Loendid
+    Select From List    components:::domainList:::_headers::2::_element    kasutaja määratud
+    Click Button    Otsi
+    paus    Tabeli uuendus
+    Click Link    123456789
+    paus    Kuva vahetus
+    Element Text Should Be    xpath=(//*[@class='form']/*/*/*)[2]    123456789
+
+Vigane uue kliendi lisamine
+    Ava administraatori menüüpunkt    Kliendid    Uue kliendi registreerimine
+    Kuva pealkiri    Uue kliendi registreerimine
+    Input Text    components:::addForm:::_elements:::registrikood:::    12423fsf23 sd
+    Click Button    Submit
+    Element Text Should Be    xpath=(//*[@class='message msg-error']/*)[1]    Sellise registrikoodiga juriidilist isikut pole Äriregistris registreeritud. Palun parandage sisestatud andmeid
+
+Logi välja ja sisene kliendina
+    Välja logimine
+    goto    https://pria.nortal.com/epm-portal/
+    paus    oota lehte
+    Click Link    viewChangeLink
+    paus    kuva vahetus
+    Input Text    username    ${KLIENT_KASUTAJA}
+    Input Password    password    ${KLIENT_PAROOL}
+    Click Link    Sisene
+    Click Link    ${KLIENT_NIMI}
+    paus    oota
+
+Aadressi lisamine ja kustutamine
+    Kuvale minemine    Minu andmed    Põhiandmed
+    Click Link    Lisa aadress
+    paus    ${EMPTY}
+    Input Text    components:::kontaktPopup:::_components:::kontaktAadressComponent:::_components:::aadressForm:::_elements:::aadressEdit:::    Turu 3, \ Tartu, \ Tartumaa
+    paus    ${EMPTY}
+    Click Button    Salvesta
+    paus    ${EMPTY}
+    Element Text Should Be    xpath=(//*[@class='data ng-scope']/tbody)[1]/*/*[1]    Turu 3, Tartu, Tartumaa
+    Click Link    Kustuta
+    Click Button    Jah
+
+Teenuse valimine
+    Kuvale minemine    Teenused    Teenused valdkondade kaupa
+    Click Link    Mahepõllumajandus
+    paus    kuvavahetus
+    Click Link    Taimekasvatusplaan vorm T-3
+    paus    kuva vahetus
+    Element Should Contain    xpath=//*[@id='content']/*[1]/h1    Taimekasvatusplaan vorm T-3
+    Click Button    Salvesta ja esita
+    Element Text Should Be    xpath=//*[@class='message msg-error']    Taotluse põhifailid puudu.
+    Choose File    xpath=//*[@id='components:::dokumentComponent:::_components:::dokumentList:::_rows::0::']/*[3]/*    ${FAILI_ASUKOHT}
+    paus    Oota faili üleslaadimine
+    Click Link    Salvesta
+    Element Should Contain    xpath=//*[@id='components:::dokumentComponent:::_components:::dokumentList:::_rows::0::']/td[3]    LICENSE.txt
+    Click Button    Salvesta ja esita
+    Click Button    Jah
+    Page Should Contain Element    xpath=//*[@class='message msg-ok']/h2
+    Element Text Should Be    xpath=//*[@class='message msg-ok']/h2    Dokument on esitatud
+
+Volitatava otsing
+    Kuvale minemine    Minu andmed    Volitused
+    Element Text Should Be    xpath=//*[@class='title form-title clear']/h1    Volitused
+    Input Text    components:::klientEsindamineListComponent:::_components:::klientEsindamineList:::_headers::0::_element    Kati Ööviiul
+    Click Button    Otsi
+    paus    Tabeli Uuendus
+    Element Should Contain    components:::klientEsindamineListComponent:::_components:::klientEsindamineList:::_rows::0::    KATI ÖÖVIIUL
+    Click Link    KATI ÖÖVIIUL
+    paus    kuva vahetus
+    Element Should Contain    xpath=(//*[@class='form']/*/tr)[1]    KARL    Isiku eesnimi
+    Element Should Contain    xpath=(((//*[@class='form']/*)[2])/*)[1]    KATI    Volitatava eesnimi
+
+Teated klient
+    Kuvale minemine    Teated    Saabunud teated
+    Element Text Should Be    xpath=//*[@class='title form-title clear']/h1    Saabunud teated
+    Page Should Contain Element    xpath=//*[@id='components:::saadetudSaabunudComp:::_components:::teadeteList:::']/tbody/*/*[2]
+    Kuvale minemine    Teated    Saadetud teated
+    Element Text Should Be    xpath=//*[@class='title form-title clear']/h1    Saadetud teated
+    Page Should Contain Element    xpath=//*[@id='components:::saadetudSaabunudComp:::_components:::teadeteList:::']/tbody/*/*[2]
+
+Välja logimine ja akna sulgemine
+    Välja logimine
+    paus    sulgeme veebilehitseja
+
+Close
+    Close All Browsers
+
+*** Keywords ***
+Ava leht
+    [Arguments]    ${rada}
+    [Documentation]    Lehe aadressipõhine avamine. Aadressisse lisatakse automaatselt keele viide (et)
+    Go To    ${AADRESS}et${rada}
+
+Ava esileht
+    Go To    ${AADRESS}
+
+Ava administraatori menüüpunkt
+    [Arguments]    ${Menüüpunkt}    ${Alammenüü}
+    [Documentation]    Navigeerime administraator menüüpunktis
+    logi-info    Liigume administraatori menüüpunkti
+    Page Should Contain Element    adminbar
+    Kuvale minemine    ${Menüüpunkt}    ${Alammenüü}
+
+Kuvale minemine
+    [Arguments]    ${Menüüpunkt}    ${Alammenüü}
+    paus    Avame menüüpunkti
+    Click Link    ${Menüüpunkt}
+    paus    Avame menüüpunkti alamlingi
+    Click Link    ${Alammenüü}
+
+Kuva pealkiri
+    [Arguments]    ${Kuva pealkiri}
+    Element Text Should Be    xpath=(//*[@id='comp'])/*/*[1]/h1    ${Kuva pealkiri}
+
+Välja logimine
+    [Documentation]    Logime kasutaja süsteemist välja
+    Click Link    Logi välja
+    paus    kuva vahetus
+    Element Text Should Be    xpath=(//*[@class='inner clear'])[2]/h2    Väljalogimine õnnestus
+
+Leht sisaldab teadet
+    [Arguments]    ${teade}
+    [Documentation]    Kontrollime, kas lehel esineb järgmine teade
+    Element Should Contain    xpath=(//*[@id='messages'])    ${teade}    Lehel ei eksisteeri teadet: ${teade}
+
+paus
+    [Arguments]    ${kommentaar}
+    [Documentation]    Teeme pausi... kasuta erandjuhtudel!
+    sleep    4    ${kommentaar}
+
+logi-info
+    [Arguments]    ${sõnum}
+    [Documentation]    Logisse teate kirjutamine
+    Log    ${sõnum}    INFO
+
+dialog-pealkiri-on
+    [Arguments]    ${pealkiri}
+    [Documentation]    Dialoog akna pealkirja kontrollimine
+    paus    ${EMPTY}
+    Page Should Contain Element    xpath=(//*[@id='components:::confirmationModalDialog:::'])
+    Element Should Contain    xpath=(//*[@id='components:::confirmationModalDialog:::']/h1)    ${pealkiri}    Dialoog aken ei sisalda pealkirja "${pealkiri}"
+
+dialog-katkesta
+    [Documentation]    Avatud dialoogakna "Katkesta" lingi rakendamine
+    logi-info    Dialoog akna sulgemine 'Katkesta' lingi vahendusel
+    Page Should Contain Element    xpath=(//*[@id='components:::confirmationModalDialog:::'])    Dialoog aken ei ole avatud
+    Click Link    xpath=(//*[@id='components:::confirmationModalDialog:::']/div/p[2]/a)
+    paus    ${EMPTY}
+
+dialoog-jah
+    logi-info    Dialoog akna sulgemine 'Jah' lingi vahendusel
+    Page Should Contain Element    xpath=(//*[@id='components:::confirmationModalDialog:::'])    Dialoog aken ei ole avatud
+    Click Button    xpath=(//*[@id='components:::confirmationModalDialog:::']/div/p[1]/button)
+    paus    ${EMPTY}
+
+popup-pealkiri-on
+    [Arguments]    ${popup-id}    ${pealkiri}
+    [Documentation]    Popup-akna pealkirja kontrollimine
+    paus    ${EMPTY}
+    Page Should Contain Element    xpath=(//*[@id='${popup-id}']/div[1]/h1)
+    Element Should Contain    xpath=(//*[@id='${popup-id}']/div[1])    ${pealkiri}    Popup-aken ei sisalda pealkirja "${pealkiri}"
+
+popup-katkesta
+    [Arguments]    ${popup-id}    # Popup akna CSS ID
+    [Documentation]    Avatud popup "Katkesta" lingi rakendamine
+    Page Should Contain Element    xpath=(//*[@id='${popup-id}']/div[1]/h1)    Popup aken ei ole avatud
+    Click Link    xpath=(//*[@id='${popup-id}']/div[3]/p[2]/a)
+    paus    ${EMPTY}
+
+popup-sulge
+    [Arguments]    ${popup-id}
+    [Documentation]    Avatud popup "Sulge" lingi rakendamine
+    Page Should Contain Element    xpath=(//*[@id='${popup-id}']/div[1]/h1)
+    Click Link    xpath=(//*[@id='${popup-id}']/div[1]/p/a)
+    paus    ${EMPTY}
+
+popup-nupp-vajuta
+    [Arguments]    ${popup-id}    ${nupu-number}
+    [Documentation]    Popup-aknas asuvale nupule klõpsamine
+    Page Should Contain Element    xpath=(//*[@id='${popup-id}']/div[1]/h1)
+    Click Button    xpath=(//*[@id='${popup-id}']/div[3]/p[1]/button[${nupu-number}])
+    paus    ${EMPTY}
+
+Teardown
+    Close All Browsers

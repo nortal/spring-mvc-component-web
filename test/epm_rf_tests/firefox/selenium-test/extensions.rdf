@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:NS1="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6.23"
+                   NS1:internalName="classic/1.0"
+                   NS1:locked="true"
+                   NS1:appManaged="true"
+                   NS1:name="Default"
+                   NS1:description="The default theme."
+                   NS1:creator="Mozilla"
+                   NS1:contributor="Mozilla Contributors">
+    <NS1:type NC:parseType="Integer">4</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$bgkQG3"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mozilla:item:{aa84ce40-4253-a00a-8cd6-0800200f9a66}"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="3.7.2.1043"
+                   NS1:iconURL="chrome://esteid-pkcs11-module-loader/content/id-32.png"
+                   NS1:name="Estonian ID Card PKCS11 module loader"
+                   NS1:description="Estonian ID Card PKCS11 module loader">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$ffkQG3"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mozilla:item:FFPDFArchitectConverter@pdfarchitect.com"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="1.0"
+                   NS1:optionsURL="chrome://FFPDFArchitectExt/content/options.xul"
+                   NS1:aboutURL="chrome://FFPDFArchitectExt/content/about.xul"
+                   NS1:iconURL="chrome://FFPDFArchitectExt/content/firefoxextension.png"
+                   NS1:name="PDF Architect Converter For Firefox"
+                   NS1:description="This extension help you to convert html page to the pdf document."
+                   NS1:creator="PDF Forge GbR"
+                   NS1:homepageURL="http://pdfarchitect.org"
+                   NS1:appDisabled="true">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$ufkQG3"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$ffkQG3"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="2.0"
+                   NS1:maxVersion="*" />
+  <RDF:Description RDF:about="rdf:#$ufkQG3"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="4.0"
+                   NS1:maxVersion="9.*" />
+  <RDF:Description RDF:about="urn:mozilla:item:fiddlerhook@fiddler2.com"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="2.3.7.4"
+                   NS1:updateURL="https://www.fiddler2.com/redir/?id=FIDDLERHOOKRDF"
+                   NS1:aboutURL="chrome://fiddlerhook/content/about.xul"
+                   NS1:iconURL="chrome://fiddlerhook/content/fiddlerhook.png"
+                   NS1:name="FiddlerHook"
+                   NS1:description="Integrate Fiddler into Firefox"
+                   NS1:creator="Eric Lawrence"
+                   NS1:homepageURL="https://www.fiddler2.com/redir/?id=FIDDLERHOOKHELP">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$JfkQG3"/>
+  </RDF:Description>
+  <RDF:Seq RDF:about="urn:mozilla:item:root">
+    <RDF:li RDF:resource="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
+    <RDF:li RDF:resource="urn:mozilla:item:fiddlerhook@fiddler2.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:FFPDFArchitectConverter@pdfarchitect.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:{aa84ce40-4253-a00a-8cd6-0800200f9a66}"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="rdf:#$JfkQG3"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.0"
+                   NS1:maxVersion="15.*" />
+  <RDF:Description RDF:about="rdf:#$bgkQG3"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6.23"
+                   NS1:maxVersion="3.6.23" />
+</RDF:RDF>

@@ -1,0 +1,31 @@
+<project name="web" default="copy_modified_to_target_dir" basedir=".">
+	
+	<target name="copy_modified_to_target_dir" description="Copy all changed files to target directory">
+		<copy todir="target/epm-portal/" overwrite="true">
+			<fileset dir="src/main/webapp/">
+				<modified update="true" />
+				<include name="WEB-INF/**/*.jsp"/>
+				<include name="WEB-INF/**/*.tag"/>
+				<include name="WEB-INF/**/*.xml"/>
+				<include name="js/**/*.js"/>
+				<include name="js/**/*.css"/>
+				<include name="gfx/**/*.*"/>
+				<include name="static/**/*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copy_all_to_target_dir" description="Copy all files to target directory">
+		<copy todir="target/epm-portal/" overwrite="true">
+			<fileset dir="src/main/webapp/"> 
+				<include name="WEB-INF/**/*.jsp"/>
+				<include name="WEB-INF/**/*.tag"/>
+				<include name="js/**/*.js"/>
+				<include name="js/**/*.css"/>
+				<include name="gfx/**/*.*"/>
+				<include name="static/**/*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+</project>
